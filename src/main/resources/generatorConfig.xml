@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="/Users/xiyongchun/.m2/repository/mysql/mysql-connector-java/5.1.37/mysql-connector-java-5.1.37.jar"/>
+
+    <context id="admin" targetRuntime="MyBatis3">
+        <!--去除注释  -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://localhost:3306/admin?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"
+            userId="root" password="yanfa@123">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.banary.admin.entity" targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis" targetProject="MAVEN">
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.banary.admin.mapper"
+                             targetProject="MAVEN">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--<table schema="public" tableName="user" domainObjectName="User">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="id" property="id" javaType="java.lang.Long"/>
+            <columnOverride column="user_name" property="userName"/>
+            <columnOverride column="password" property="password"/>
+            <columnOverride column="role" property="role"/>
+            <columnOverride column="real_name" property="realName"/>
+            <columnOverride column="mobile" property="mobile"/>
+            <columnOverride column="status" property="status"/>
+            <columnOverride column="remark" property="remark"/>
+            <columnOverride column="version" property="version"/>
+            <columnOverride column="create_time" property="createTime"/>
+            <columnOverride column="update_time" property="updateTime"/>
+        </table>-->
+
+        <table schema="public" tableName="system_log" domainObjectName="SystemLog">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="id" property="id" javaType="java.lang.Long"/>
+            <columnOverride column="operator_id" property="userName" javaType="java.lang.Long"/>
+            <columnOverride column="operator_name" property="password" javaType="java.lang.String"/>
+            <columnOverride column="operate_type" property="role" javaType="java.lang.Integer"/>
+            <columnOverride column="operator_ip" property="realName" javaType="java.lang.String"/>
+            <columnOverride column="content" property="mobile" javaType="java.lang.String"/>
+            <columnOverride column="version" property="version" javaType="java.lang.Integer" />
+            <columnOverride column="create_time" property="createTime" javaType="java.time.LocalDateTime"/>
+            <columnOverride column="update_time" property="updateTime" javaType="java.time.LocalDateTime"/>
+        </table>
+
+    </context>
+    <!--
+        mvn mybatis-generator:generate
+        java -jar mybatis-generator-core-1.3.2.jar -configfile generatorConfig.xml -overwrite
+    -->
+</generatorConfiguration>
