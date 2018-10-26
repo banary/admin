@@ -22,28 +22,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//            .anyRequest()
-//            .authenticated()
-//            //指定登录页
-//        .and()
-//            .formLogin()
-//            .loginPage("/login")
-//            .failureUrl("/login?error")
-//            .defaultSuccessUrl("/")
-//            .successHandler(loginSuccessHandler)
-//            .permitAll()
-//        .and()
-//            .logout()
-//            .logoutUrl("/logout")
-//            .logoutSuccessUrl("/login")
-//            .permitAll()
-//        .and()
-//            .headers()
-//            .frameOptions().sameOrigin()
-//            .httpStrictTransportSecurity().disable();
+        http.authorizeRequests()
+            .anyRequest()
+            .authenticated()
+            //指定登录页
+        .and()
+            .formLogin()
+            .loginPage("/login")
+            .failureUrl("/login?error")
+            .defaultSuccessUrl("/")
+            .successHandler(loginSuccessHandler)
+            .permitAll()
+        .and()
+            .logout()
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/login")
+            .permitAll()
+        .and()
+            .headers()
+            .frameOptions().sameOrigin()
+            .httpStrictTransportSecurity().disable();
 
-        http.authorizeRequests().anyRequest().permitAll();
+//        http.authorizeRequests().anyRequest().permitAll();
         http.csrf().disable();
     }
 

@@ -14,7 +14,7 @@ spring:
     cache: false
 
 server:
-  context-path: /admin
+  context-path: /
   port: 8082
   tomcat:
     uri-encoding: utf-8
